@@ -1,5 +1,15 @@
 .App {
+  color: #fff;
+  background: linear-gradient(#101428, #37183c);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+}
+
+.starter {
+  display: flex;
+  flex-direction: row;
 }
 
 .App-logo {

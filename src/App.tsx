@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, ReactNode } from 'react';
 import './App.css';
+import City from './components/City';
+import Content from './components/Content';
+import Home from './components/Home';
 
-function App() {
+const App = () =>{
+  const [currentComponent, setCurrentComponent] = useState<ReactNode>(<Home />)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='starter'>
+          <City setCurrentComponent={setCurrentComponent}/>
+          <Content childComp={currentComponent}/>
+      </div>
     </div>
   );
 }
