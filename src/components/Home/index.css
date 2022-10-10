@@ -1,9 +1,9 @@
 .home-content {
-    font-size: 1.3em;
+    font-size: 1.1em;
 }
 
 .home-container > h1 {
-    font-size: 2.6em;
+    font-size: 2.3em;
 }
 
 .home-container > h1 > span {
@@ -15,4 +15,28 @@
         0 0 50px #e7579f, 
         0 0 60px #e7579f, 
         0 0 70px #e7579f;
+}
+
+.btn {
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    border: none;
+}
+
+.home-btn {
+    z-index: 5;
+    transition: .5s;
+    margin-top: 60px;
+    color: #fff;
+    background-color: #e7579f;
+    box-shadow:  0 0 40px #e7579f;
+    border-radius: 50px;
+}
+
+.home-btn:hover {
+    transition: .5s;
+    transform: translateY(-4px);
+    background-color: #db6ce7;
+    box-shadow:  0 0 40px #d88cb2;
 }

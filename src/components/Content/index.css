@@ -1,6 +1,7 @@
 .home-container {
     margin: 20px;
-    margin-top: 30vh;
+    margin-top: 35vh;
     width: 50%;
-    height: 60vh;
+    text-align: left;
+    margin-left: 50px;
 }

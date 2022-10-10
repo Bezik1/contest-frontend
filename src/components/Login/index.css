@@ -1,11 +1,56 @@
-.login-form > h1 {
+.login-container > h1 {
+    text-align: center;
+    font-size: 2.3em;
     text-shadow: 
-    0 0 10px #fff, 
-    0 0 20px #90ee90, 
-    0 0 30px #90ee90, 
-    0 0 40px #90ee90, 
-    0 0 50px #90ee90, 
-    0 0 60px #90ee90, 
-    0 0 70px #90ee90;
+        0 0 10px #fff, 
+        0 0 20px #90ee90, 
+        0 0 30px #90ee90, 
+        0 0 40px #90ee90, 
+        0 0 50px #90ee90, 
+        0 0 60px #90ee90, 
+        0 0 70px #90ee90;
+}
+.input-container {
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.input-container > label {
+    width: 25%;
+    margin: 20px;
+}
+
+.input-container > input {
+    width: 25%;
+    margin: 20px;
+    padding: 5px;
+}
+
+.login-form {
+    margin-top: 30px;
+}
+
+.submit-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-submit {
+    text-align: center;
+    cursor: pointer;
+    transition: .5s;
+    margin-top: 20px;
+    width: 10%;
+    height: 10%;
+}
+
+.login-submit:hover {
+    transition: .5s;
+    filter: drop-shadow(0px 0px 20px #90ee90);
+    color: #90ee90;
+    transform: translateY(-5px);
+}

@@ -16,6 +16,11 @@ export interface User {
     comments: Comment[]
 }
 
+export interface Announcement {
+    from: string;
+    content: string
+}
+
 export interface Response<T> {
     status: string;
     message: string;
@@ -24,4 +29,10 @@ export interface Response<T> {
 
 export interface ParentCompProps {
     childComp?: React.ReactNode;
-  }
+}
+
+export interface CityProps {
+    setUser: React.Dispatch<React.SetStateAction<User | undefined>>;
+    setCurrentComponent: React.Dispatch<React.SetStateAction<React.ReactNode>>;
+    setLogged?: React.Dispatch<React.SetStateAction<boolean>>
+}

@@ -1,9 +1,11 @@
 import axios from "axios"
 import { useRef, useState } from "react"
-import { Data, User } from "../../interfaces/interfaces"
+import { IoMdLogIn } from "react-icons/io"
+import { CityProps, Data, User } from "../../interfaces/interfaces"
+import Home from "../Home"
 import './index.css'
 
-const Login = () =>{
+const Login = ({ setUser, setCurrentComponent, setLogged } : CityProps) =>{
     const [message, setMessage] = useState('')
 
     const usernameRef = useRef<HTMLInputElement>(null!)
@@ -25,7 +27,11 @@ const Login = () =>{
             const userData: Data<User> = await axios.post(API_LINK, data)
 
             if(userData.data.status === 'succes') {
-                setMessage(userData.data.message)
+                setUser(userData.data.data)
+                setCurrentComponent(<Home />)
+
+                //@ts-ignore
+                setLogged(true)
             } else {
                 setMessage(userData.data.message)
             }
@@ -34,11 +40,10 @@ const Login = () =>{
         }
     }
 
-    const Content = () =>{
-        return (
+    const Content = () => (
             <div className="login-container">
+                <h1> Login </h1>
                 <div className="login-form">
-                    <h1> Login </h1>
                     <div className="input-container">
                         <label> Username: </label>
                         <input type='text' id='username' ref={usernameRef} />
@@ -54,12 +59,12 @@ const Login = () =>{
                     <div className="message-container">
                         <div className={message !== '' ? "message" :""}> { message } </div>
                     </div>
-                    <button className="login-submit" onClick={handleSubmit}> Submit </button>
+                    <div className="submit-container">
+                        <IoMdLogIn className="login-submit" onClick={handleSubmit} />
+                    </div>
                 </div>
             </div>
         )
-    }
-
     return <Content />
 }
 

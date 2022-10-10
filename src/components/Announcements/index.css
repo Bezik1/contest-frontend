@@ -1,0 +1,34 @@
+.announcements-container {
+    text-align: center;
+}
+
+.announcements-container > #searchbar {
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #573574;
+    border: none;
+    color: #fff;
+}
+
+.announcements-container > .searchbar-label {
+    margin-right: 20px;
+}
+
+.announcements-container > h1 {
+    font-size: 2.3em;
+    text-shadow: 
+        0 0 10px #fff, 
+        0 0 20px #ff69b4, 
+        0 0 30px #ff69b4, 
+        0 0 40px #ff69b4, 
+        0 0 50px #ff69b4, 
+        0 0 60px #ff69b4, 
+        0 0 70px #ff69b4;
+}
+
+.announcements-array {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

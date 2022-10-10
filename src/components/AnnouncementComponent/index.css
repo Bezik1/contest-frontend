@@ -1,0 +1,17 @@
+.announcement {
+    width: 50%;
+    margin-top: 25px;
+    padding: 10px;
+    background-color: #573574;
+}
+
+.announcement > h1 {
+    text-shadow: 
+        0 0 50px #7ab2e3, 
+        0 0 60px #7ab2e3, 
+        0 0 70px #7ab2e3;
+}
+
+.announcement > .announcement-content {
+    padding: 20px;
+}

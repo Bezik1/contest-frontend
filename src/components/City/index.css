@@ -1,8 +1,15 @@
 .city-container {
     margin: 20px;
-    margin-top: 15vh;
+    margin-top: 20vh;
     width: 50vw;
     height: 80vh;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.city-hover {
+    cursor: pointer;
 }
 
 .city-canvas {
