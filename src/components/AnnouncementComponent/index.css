@@ -6,10 +6,8 @@
 }
 
 .announcement > h1 {
-    text-shadow: 
-        0 0 50px #7ab2e3, 
-        0 0 60px #7ab2e3, 
-        0 0 70px #7ab2e3;
+    color: #ffaad5;
+    text-shadow: 0 0 20px #fff;
 }
 
 .announcement > .announcement-content {

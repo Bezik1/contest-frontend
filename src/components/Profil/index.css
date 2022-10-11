@@ -1,0 +1,54 @@
+.profil {
+    text-align: center;
+}
+
+.profil > h1 {
+    font-size: 2.3em;
+}
+
+.profil > h1 > span {
+    text-shadow: 
+        0 0 10px #fff, 
+        0 0 20px #ff69b4, 
+        0 0 30px #ff69b4, 
+        0 0 40px #ff69b4, 
+        0 0 50px #ff69b4, 
+        0 0 60px #ff69b4, 
+        0 0 70px #ff69b4;
+}
+
+.user-email {
+    font-size: 1.5em;
+}
+
+.user-email > span {
+    text-shadow:
+        0 0 10px #75cbe8,
+        0 0 20px #75cbe8,
+        0 0 30px #75cbe8,
+        0 0 40px #75cbe8;
+}
+
+.add-announcement {
+    transition: .5s;
+    color: #fff;
+    margin-top: 50px;
+    background: #8f69ff;
+    box-shadow:  0 0 40px #8f69ff;
+    border-radius: 50px;
+}
+
+.add-announcement:hover {
+    transition: .5s;
+    transform: translateY(-4px);
+    background-color: #bda8fd;
+    box-shadow:  0 0 40px #bda8fd;
+}
+
+.plus path {
+    stroke: #fff;
+}
+
+.plus {
+    padding-left: 2px;
+}

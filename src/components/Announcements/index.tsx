@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useFetch } from '../../hooks/useFetch'
 import { Announcement } from '../../interfaces/interfaces'
 import AnnouncementComponent from '../AnnouncementComponent'
@@ -9,7 +9,6 @@ const AnnouncementsArray = () =>{
     const [announcements] = useFetch<Announcement[]>(API_LINK)
     const previousAnnouncements = announcements?.data
     const [data, setData] = useState<Announcement[]>([])
-    const searchRef = useRef<HTMLInputElement>(null!)
 
     useEffect(() =>{
         setData(announcements?.data)

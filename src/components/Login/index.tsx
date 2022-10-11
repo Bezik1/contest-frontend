@@ -2,10 +2,10 @@ import axios from "axios"
 import { useRef, useState } from "react"
 import { IoMdLogIn } from "react-icons/io"
 import { CityProps, Data, User } from "../../interfaces/interfaces"
-import Home from "../Home"
+import Profil from "../Profil"
 import './index.css'
 
-const Login = ({ setUser, setCurrentComponent, setLogged } : CityProps) =>{
+const Login = ({ user, setUser, setCurrentComponent, setLogged } : CityProps) =>{
     const [message, setMessage] = useState('')
 
     const usernameRef = useRef<HTMLInputElement>(null!)
@@ -13,7 +13,7 @@ const Login = ({ setUser, setCurrentComponent, setLogged } : CityProps) =>{
     const passwordRef = useRef<HTMLInputElement>(null!)
 
     const handleSubmit = async () =>{
-        const API_LINK = 'https://easy-dict.herokuapp.com/users/login'
+        const API_LINK = 'http://localhost:3000/users/login'
         setMessage('')
 
         try {
@@ -28,7 +28,7 @@ const Login = ({ setUser, setCurrentComponent, setLogged } : CityProps) =>{
 
             if(userData.data.status === 'succes') {
                 setUser(userData.data.data)
-                setCurrentComponent(<Home />)
+                setCurrentComponent(<Profil user={userData.data.data} />)
 
                 //@ts-ignore
                 setLogged(true)

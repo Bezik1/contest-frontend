@@ -32,7 +32,18 @@ export interface ParentCompProps {
 }
 
 export interface CityProps {
+    user: User | undefined;
+    logged?: boolean;
     setUser: React.Dispatch<React.SetStateAction<User | undefined>>;
     setCurrentComponent: React.Dispatch<React.SetStateAction<React.ReactNode>>;
-    setLogged?: React.Dispatch<React.SetStateAction<boolean>>
+    setLogged: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export interface NavbarProps {
+    user?: User | undefined;
+    logged: boolean;
+    currentComponent: React.ReactNode
+    setLogged: React.Dispatch<React.SetStateAction<boolean>>;
+    setUser: React.Dispatch<React.SetStateAction<User | undefined>>;
+    setCurrentComponent: React.Dispatch<React.SetStateAction<React.ReactNode>>;
 }

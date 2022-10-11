@@ -7,9 +7,9 @@ import Login from '../Login'
 import { CityProps } from '../../interfaces/interfaces'
 import { useState } from 'react'
 import AnnouncementsArray from '../Announcements'
+import Profil from '../Profil'
 
-const City = ({ setCurrentComponent, setUser } : CityProps) =>{
-    const [logged, setLogged] = useState(false)
+const City = ({ user, setCurrentComponent, setUser, logged, setLogged } : CityProps) =>{
     const [hover, setHover] = useState([false, ''])
     
     const handleClick = (clickType: string) =>{
@@ -22,11 +22,17 @@ const City = ({ setCurrentComponent, setUser } : CityProps) =>{
                     setUser(undefined)
                     setLogged(false)
                 } else {
-                    setCurrentComponent(<Login 
+                    setCurrentComponent(<Login
+                        user={user}
                         setUser={setUser} 
                         setCurrentComponent={setCurrentComponent}
                         setLogged={setLogged}
                     />)
+                }
+                break
+            case 'Profile':
+                if(logged){
+                    setCurrentComponent(<Profil user={user} />)
                 }
                 break
         }
@@ -47,6 +53,28 @@ const City = ({ setCurrentComponent, setUser } : CityProps) =>{
                 <OrbitControls autoRotateSpeed={0.2} autoRotate={true} target={gltf.scene.position} />
             </>
         )
+    }
+
+    const IfLogged = () =>{
+        if(logged){
+            return (
+                <Text
+                    onPointerOver={() => setHover([true, 'Profile'])}
+                    onPointerOut={() => setHover([false, 'Profile'])}
+                    onClick={() => handleClick('Profile')}
+                    scale={[3, 3, 3]}
+                    rotation={[-Math.PI/2, 0, 0]}
+                    position={[-0.5, -2.5, 1]}
+                    color={hover[0] && hover[1] === 'Profile' ? "lightblue" : "blue"}
+                    anchorX="center" // default
+                    anchorY="middle" // default
+                >
+                    Profile
+                </Text>
+            )
+        } else {
+            return <></>
+        }
     }
 
     return (
@@ -85,19 +113,7 @@ const City = ({ setCurrentComponent, setUser } : CityProps) =>{
                 >
                     Announcements
                 </Text>
-                <Text
-                    onPointerOver={() => setHover([true, 'Profile'])}
-                    onPointerOut={() => setHover([false, 'Profile'])}
-                    onClick={() => handleClick('Profile')}
-                    scale={[3, 3, 3]}
-                    rotation={[-Math.PI/2, 0, 0]}
-                    position={[-0.5, -2.5, 1]}
-                    color={hover[0] && hover[1] === 'Profile' ? "lightblue" : "blue"}
-                    anchorX="center" // default
-                    anchorY="middle" // default
-                >
-                    Profile
-                </Text>
+                <IfLogged />
             </Canvas>
         </div>
     )
