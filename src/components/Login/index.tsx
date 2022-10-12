@@ -1,11 +1,12 @@
 import axios from "axios"
 import { useRef, useState } from "react"
 import { IoMdLogIn } from "react-icons/io"
+import { API_URLS } from "../../constans/constans"
 import { CityProps, Data, User } from "../../interfaces/interfaces"
 import Profil from "../Profil"
 import './index.css'
 
-const Login = ({ user, setUser, setCurrentComponent, setLogged } : CityProps) =>{
+const Login = ({ setUser, setCurrentComponent, setLogged } : CityProps) =>{
     const [message, setMessage] = useState('')
 
     const usernameRef = useRef<HTMLInputElement>(null!)
@@ -13,7 +14,8 @@ const Login = ({ user, setUser, setCurrentComponent, setLogged } : CityProps) =>
     const passwordRef = useRef<HTMLInputElement>(null!)
 
     const handleSubmit = async () =>{
-        const API_LINK = 'http://localhost:3000/users/login'
+        const { USERS_URL } = API_URLS
+        const API_URL= `${USERS_URL}/login`
         setMessage('')
 
         try {
@@ -24,11 +26,11 @@ const Login = ({ user, setUser, setCurrentComponent, setLogged } : CityProps) =>
                 comments: []
             }
     
-            const userData: Data<User> = await axios.post(API_LINK, data)
+            const userData: Data<User> = await axios.post(API_URL, data)
 
             if(userData.data.status === 'succes') {
                 setUser(userData.data.data)
-                setCurrentComponent(<Profil user={userData.data.data} />)
+                setCurrentComponent(<Profil setCurrentComponent={setCurrentComponent} />)
 
                 //@ts-ignore
                 setLogged(true)

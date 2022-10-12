@@ -1,13 +1,22 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { GrAdd } from "react-icons/gr"
+import { API_URLS } from "../../constans/constans"
+import { CurrentComponentContext } from "../../contexts/currentComponent.context"
+import { UserContext } from "../../contexts/user.context"
 import { useFetch } from "../../hooks/useFetch"
-import { Announcement, User } from '../../interfaces/interfaces'
+import { Announcement } from '../../interfaces/interfaces'
+import CreateAnnouncement from "../CreateAnnouncement"
 import './index.css'
 
-const Profil = ({ user } : { user: User | undefined }) =>{
-    const API_LINK = "http://localhost:3000/announcements"
-    const [data] = useFetch<Announcement[]>(API_LINK)
+const Profil = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatch<React.SetStateAction<React.ReactNode>> }) =>{
+    const { ANNOUNCEMENTS_URL } = API_URLS
+    const [data] = useFetch<Announcement[]>(ANNOUNCEMENTS_URL)
 
+    const user = useContext(UserContext)
+    const setComponentName = useContext(CurrentComponentContext)
+
+    const [announcementClicked, setAnnouncementClicked] = useState(false)
+    const [commentsClicked, setCommentsClicked] = useState(false)
     const [userAnnouncements, setUserAnnouncements] = useState<Announcement[]>([])
     
     useEffect(() =>{
@@ -26,9 +35,9 @@ const Profil = ({ user } : { user: User | undefined }) =>{
     }
 
     const mapUserAnnouncements = () =>{
-        return userAnnouncements?.
-            filter(userAnnouncement => userAnnouncement.from === user?.username).
-            map(userAnnouncement => (
+        return userAnnouncements?.filter(
+            userAnnouncement => userAnnouncement.from === user?.username).map(
+            userAnnouncement => (
                 <div className='announcement'>
                     <h1> { userAnnouncement.from } </h1>
                     <div className='announcement-content'>
@@ -38,19 +47,70 @@ const Profil = ({ user } : { user: User | undefined }) =>{
             ))
     }
 
+    const handleClick = () =>{
+        //@ts-ignore
+        setComponentName('Create Announcement')
+        setCurrentComponent(<CreateAnnouncement from={user?.username} />)
+    }
+
+    const UserAnnouncements = () =>{
+        if(announcementClicked){
+            return (
+                <>
+                    <button 
+                        className="hide-announcements btn" 
+                        onClick={() => setAnnouncementClicked(!announcementClicked)}> 
+                        Hide your announcements 
+                    </button>
+                    { mapUserAnnouncements() }
+                </>
+            )
+        } else {
+            return <button 
+                        className="see-announcements btn" 
+                        onClick={() => setAnnouncementClicked(!announcementClicked)}> 
+                        See your announcements 
+                    </button>
+        }
+    }
+
+    const UserComments = () =>{
+        if(commentsClicked){
+            return (
+                <>
+                    <button 
+                        className="hide-comments btn" 
+                        onClick={() => setCommentsClicked(!commentsClicked)}> 
+                        Hide your comments 
+                    </button>
+                    { commentsMap() }
+                </>
+            )
+        } else {
+            return <button 
+                        className="see-comments btn" 
+                        onClick={() => setCommentsClicked(!commentsClicked)}> 
+                        See your comments 
+                    </button>
+        }
+    }
+
     return (
         <div className='profil'>
             <h1> Username: <span>{ user?.username }</span> </h1>
             <div className="profil-content">
                 <div className="user-email"> Email: <span>{ user?.email }</span> </div>
                 <div className="user-comments-container">
-                    { commentsMap() }
+                    <UserComments />
                 </div>
                 <div className="announcements-array">
-                    <h2> Your Announcements </h2>
-                    { mapUserAnnouncements() }
-                    <button className='btn add-announcement'> Create Announcement <GrAdd className="plus"/> </button>
+                    <UserAnnouncements />
                 </div>
+                <button 
+                    className='btn add-announcement' 
+                    onClick={handleClick}> 
+                    Create Announcement <GrAdd className="plus"/> 
+                </button>
             </div>
         </div>
     )

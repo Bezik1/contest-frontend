@@ -1,5 +1,5 @@
 .announcement {
-    width: 50%;
+    width: 75%;
     margin-top: 25px;
     padding: 10px;
     background-color: #573574;
@@ -12,4 +12,5 @@
 
 .announcement > .announcement-content {
     padding: 20px;
+    text-align: center;
 }

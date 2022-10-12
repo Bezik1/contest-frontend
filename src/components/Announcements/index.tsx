@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
+import { API_URLS } from '../../constans/constans'
 import { useFetch } from '../../hooks/useFetch'
 import { Announcement } from '../../interfaces/interfaces'
 import AnnouncementComponent from '../AnnouncementComponent'
 import './index.css'
 
 const AnnouncementsArray = () =>{
-    const API_LINK = 'http://localhost:3000/announcements'
-    const [announcements] = useFetch<Announcement[]>(API_LINK)
+    const { ANNOUNCEMENTS_URL } = API_URLS
+    const [announcements] = useFetch<Announcement[]>(ANNOUNCEMENTS_URL)
     const previousAnnouncements = announcements?.data
     const [data, setData] = useState<Announcement[]>([])
 

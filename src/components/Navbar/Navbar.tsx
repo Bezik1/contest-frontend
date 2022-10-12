@@ -1,16 +1,22 @@
 import './Navbar.css'
-import { useState } from 'react'
+import { useContext } from 'react'
 import AnnouncementsArray from '../Announcements'
 import Login from '../Login'
 import { NavbarProps } from '../../interfaces/interfaces'
 import Home from '../Home'
 import Profil from '../Profil'
+import { UserContext } from '../../contexts/user.context'
+import CreateAnnouncement from '../CreateAnnouncement'
+import { CurrentComponentContext } from '../../contexts/currentComponent.context'
 
-const Navbar = ({ user, currentComponent, setCurrentComponent, setUser, setLogged } : NavbarProps) =>{
+const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : NavbarProps) =>{
+    const user = useContext(UserContext)
+    const setComponentName = useContext(CurrentComponentContext)
+
     const names= [
         {
             name: 'Login',
-            href: <Login user={user} setLogged={setLogged} setCurrentComponent={setCurrentComponent} setUser={setUser}/>
+            href: <Login setLogged={setLogged} setCurrentComponent={setCurrentComponent} setUser={setUser}/>
         },
         {
             name: 'Announcements',
@@ -18,31 +24,76 @@ const Navbar = ({ user, currentComponent, setCurrentComponent, setUser, setLogge
         },
         {
             name: 'Profil',
-            href: <Profil user={user} />
+            href: <Profil setCurrentComponent={setCurrentComponent}/>
+        },
+        {
+            name: 'Create Announcement',
+            href: <CreateAnnouncement from={user?.username} />
         },
         {
             name: 'Home',
             href: <Home />
-        }
+        },
     ]
 
-    const [clicked, click] = useState<string>('Home')
-
     const handleClick = ({ name, href} : { name: string, href: React.ReactNode}) =>{
-        click(name)
+        //@ts-ignore
+        setComponentName(name)
         setCurrentComponent(href)
     }
 
     const MapNames = () =>{
         const mapNames = () => names.map(name =>{
-            if(user === undefined && name.name === 'Profil'){
-                return <></>
-            } else if(user !== undefined && name.name === 'Login'){
-                return <></>
-            } else {
-                return (
+            switch(name.name) {
+                case 'Login':
+                    if(user !== undefined){
+                        return <></>
+                    } else {
+                        return (
+                            <button 
+                                className={componentName !== name.name
+                                                ? 'nav-link' 
+                                                : 'nav-link active'}
+                                onClick={() => handleClick(name)}
+                                key={name.name}>
+                                { name.name }
+                            </button>
+                        )
+                    }
+                case 'Profil':
+                    if(user === undefined){
+                        return <></>
+                    } else {
+                        return (
+                            <button 
+                                className={componentName !== name.name
+                                                ? 'nav-link' 
+                                                : 'nav-link active'}
+                                onClick={() => handleClick(name)}
+                                key={name.name}>
+                                { name.name }
+                            </button>
+                        )
+                    }
+                case 'Create Announcement':
+                    if(user === undefined){
+                        return <></>
+                    } else {
+                        return (
+                            <button 
+                                className={componentName !== name.name
+                                                ? 'nav-link' 
+                                                : 'nav-link active'}
+                                onClick={() => handleClick(name)}
+                                key={name.name}>
+                                { name.name }
+                            </button>
+                        )
+                    }
+                default:
+                    return (
                     <button 
-                        className={clicked !== name.name
+                        className={componentName !== name.name
                                         ? 'nav-link' 
                                         : 'nav-link active'}
                         onClick={() => handleClick(name)}

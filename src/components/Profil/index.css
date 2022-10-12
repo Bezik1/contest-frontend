@@ -1,5 +1,6 @@
 .profil {
     text-align: center;
+    margin-right: 250px;
 }
 
 .profil > h1 {
@@ -32,17 +33,16 @@
 .add-announcement {
     transition: .5s;
     color: #fff;
-    margin-top: 50px;
-    background: #8f69ff;
-    box-shadow:  0 0 40px #8f69ff;
+    margin-top: 25px;
+    background: #794cff;
+    box-shadow:  0 0 40px #794cff;
     border-radius: 50px;
 }
 
 .add-announcement:hover {
     transition: .5s;
-    transform: translateY(-4px);
-    background-color: #bda8fd;
-    box-shadow:  0 0 40px #bda8fd;
+    background-color: #c6b3fe;
+    box-shadow:  0 0 40px #c6b3fe;
 }
 
 .plus path {
@@ -51,4 +51,52 @@
 
 .plus {
     padding-left: 2px;
+}
+
+.see-announcements {
+    transition: .5s;
+    color: #fff;
+    background: #3d46df;
+    box-shadow:  0 0 40px #3d46df;
+    margin-top: 25px;
+    border-radius: 25px;
+}
+
+.see-announcements:hover {
+    transition: .5s;
+    background: #a8adff;
+    box-shadow:  0 0 40px #a8adff;
+}
+
+.hide-announcements {
+    transition: .5s;
+    color: #fff;
+    background: #9a9ffd;
+    box-shadow:  0 0 40px #9a9ffd;
+    margin-top: 25px;
+    border-radius: 25px;
+}
+
+.see-comments {
+    transition: .5s;
+    color: #fff;
+    background: #fd3636;
+    box-shadow:  0 0 40px #fd3636;
+    margin-top: 50px;
+    border-radius: 25px;
+}
+
+.see-comments:hover {
+    transition: .5s;
+    background: #ffbdbd;
+    box-shadow:  0 0 40px #ffbdbd;
+}
+
+.hide-comments {
+    transition: .5s;
+    color: #fff;
+    background: #ff7272;
+    box-shadow:  0 0 40px #ff7272;
+    margin-top: 50px;
+    border-radius: 25px;
 }

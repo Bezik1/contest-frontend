@@ -5,17 +5,21 @@ import { URLS } from '../../constans/constans'
 import './index.css'
 import Login from '../Login'
 import { CityProps } from '../../interfaces/interfaces'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import AnnouncementsArray from '../Announcements'
 import Profil from '../Profil'
+import { CurrentComponentContext } from '../../contexts/currentComponent.context'
 
-const City = ({ user, setCurrentComponent, setUser, logged, setLogged } : CityProps) =>{
+const City = ({ setCurrentComponent, setUser, logged, setLogged } : CityProps) =>{
     const [hover, setHover] = useState([false, ''])
+    const setComponentName = useContext(CurrentComponentContext)
     
     const handleClick = (clickType: string) =>{
         switch(clickType){
             case 'Announcements':
                 setCurrentComponent(<AnnouncementsArray />)
+                //@ts-ignore
+                setComponentName('Announcements')
                 break
             case 'Login':
                 if(logged){
@@ -23,16 +27,19 @@ const City = ({ user, setCurrentComponent, setUser, logged, setLogged } : CityPr
                     setLogged(false)
                 } else {
                     setCurrentComponent(<Login
-                        user={user}
                         setUser={setUser} 
                         setCurrentComponent={setCurrentComponent}
                         setLogged={setLogged}
                     />)
+                    //@ts-ignore
+                    setComponentName('Login')
                 }
                 break
-            case 'Profile':
+            case 'Profil':
                 if(logged){
-                    setCurrentComponent(<Profil user={user} />)
+                    setCurrentComponent(<Profil setCurrentComponent={setCurrentComponent} />)
+                    //@ts-ignore
+                    setComponentName('Profil')
                 }
                 break
         }
@@ -50,7 +57,7 @@ const City = ({ user, setCurrentComponent, setUser, logged, setLogged } : CityPr
                     scale={[0.45, 0.45, 0.45]}
                     position={[-0.1, -2.5, -1.5]}
                 />
-                <OrbitControls autoRotateSpeed={0.2} autoRotate={true} target={gltf.scene.position} />
+                <OrbitControls /*autoRotateSpeed={0.2} autoRotate={true}*/ target={gltf.scene.position} />
             </>
         )
     }
@@ -59,9 +66,9 @@ const City = ({ user, setCurrentComponent, setUser, logged, setLogged } : CityPr
         if(logged){
             return (
                 <Text
-                    onPointerOver={() => setHover([true, 'Profile'])}
-                    onPointerOut={() => setHover([false, 'Profile'])}
-                    onClick={() => handleClick('Profile')}
+                    onPointerOver={() => setHover([true, 'Profil'])}
+                    onPointerOut={() => setHover([false, 'Profil'])}
+                    onClick={() => handleClick('Profil')}
                     scale={[3, 3, 3]}
                     rotation={[-Math.PI/2, 0, 0]}
                     position={[-0.5, -2.5, 1]}

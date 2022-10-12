@@ -26,6 +26,7 @@ body {
 .nav-links {
     margin-top: 2px;
     padding-left: 20px;
+    margin-left: 180px;
     display: flex;
     flex-direction: row;
     align-items: center;
