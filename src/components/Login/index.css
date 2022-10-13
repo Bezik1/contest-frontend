@@ -62,3 +62,19 @@
     color: #90deee;
     transform: translateY(-5px);
 }
+
+.message-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message {
+    background-color: #f14141;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    width: 250px;
+    height: auto;
+}

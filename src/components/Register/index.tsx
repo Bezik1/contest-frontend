@@ -4,6 +4,7 @@ import { IoMdLogIn } from "react-icons/io"
 import { API_URLS } from "../../constans/constans"
 import { CurrentComponentContext } from "../../contexts/currentComponent.context"
 import { Data, User } from "../../interfaces/interfaces"
+import passwordAuth from "../../middleware/passwordAuth"
 import Home from "../Home"
 import './index.css'
 
@@ -22,21 +23,27 @@ const Register = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatc
         setMessage('')
 
         try {
-            const data: User = {
-                username: usernameRef.current.value,
-                email: emailRef.current.value,
-                password: passwordRef.current.value,
-                comments: []
-            }
-    
-            const userData: Data<User> = await axios.post(API_URL, data)
+            const [passwordMessage, isError] = passwordAuth(passwordRef.current.value)
 
-            if(userData.data.status === 'succes') {
-                setCurrentComponent(<Home />)
-                //@ts-ignore
-                setComponentName('Profil')
+            if(!isError){
+                const data: User = {
+                    username: usernameRef.current.value,
+                    email: emailRef.current.value,
+                    password: passwordRef.current.value,
+                    comments: []
+                }
+        
+                const userData: Data<User> = await axios.post(API_URL, data)
+    
+                if(userData.data.status === 'succes' && !isError) {
+                    setCurrentComponent(<Home />)
+                    //@ts-ignore
+                    setComponentName('Profil')
+                } else {
+                    setMessage(userData.data.message)
+                }
             } else {
-                setMessage(userData.data.message)
+                setMessage(passwordMessage)
             }
         } catch(err) {
             alert(`Logginng error: ${err}`)

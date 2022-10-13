@@ -47,7 +47,7 @@
 #title-input {
     color: #fff;
     padding: 20px;
-    border: 1px solid #fff;
+    border: none;
     background: transparent;
     box-shadow: 0 0 10px #90deee;
     border-radius: 15px;

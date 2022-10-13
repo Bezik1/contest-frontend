@@ -20,7 +20,9 @@ const AnnouncementsArray = () =>{
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
-        const filterData = data.filter(announcement => announcement.from.includes(e.currentTarget.value))
+        const filterData = data.filter(announcement => 
+            announcement.from.includes(e.currentTarget.value) || announcement.title.includes(e.currentTarget.value))
+            
         if(e.currentTarget.value === ''){
             setData(previousAnnouncements)
         } else {
