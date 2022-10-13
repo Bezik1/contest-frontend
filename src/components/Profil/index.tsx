@@ -9,6 +9,8 @@ import CreateAnnouncement from "../CreateAnnouncement"
 import './index.css'
 
 const Profil = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatch<React.SetStateAction<React.ReactNode>> }) =>{
+    const [clicked, click] = useState(false)
+
     const { ANNOUNCEMENTS_URL } = API_URLS
     const [data] = useFetch<Announcement[]>(ANNOUNCEMENTS_URL)
 
@@ -34,17 +36,34 @@ const Profil = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatch<
         ))
     }
 
+
+    
     const mapUserAnnouncements = () =>{
         return userAnnouncements?.filter(
             userAnnouncement => userAnnouncement.from === user?.username).map(
-            userAnnouncement => (
-                <div className='announcement'>
-                    <h1> { userAnnouncement.from } </h1>
-                    <div className='announcement-content'>
-                        { userAnnouncement.content }
+            userAnnouncement => {
+                const { from, email, title, content } = userAnnouncement
+
+                const IFClicked = () =>{
+                    if(clicked){
+                        return (
+                            <div className='announcement-content'>
+                            { content }
+                            <div className="contact"> Contact email: <span> { email } </span></div>
+                        </div>
+                        )
+                    } else {
+                        return <></>
+                    }
+                }
+                return (
+                    <div className='announcement'>
+                        <h1 onClick={() => click(!clicked)}> { title } </h1>
+                        <h2> From: <span> { from } </span></h2>
+                        <IFClicked />
                     </div>
-                </div>
-            ))
+                )
+        })
     }
 
     const handleClick = () =>{

@@ -3,13 +3,14 @@
     font-size: 2.3em;
     text-shadow: 
         0 0 10px #fff, 
-        0 0 20px #90ee90, 
-        0 0 30px #90ee90, 
-        0 0 40px #90ee90, 
-        0 0 50px #90ee90, 
-        0 0 60px #90ee90, 
-        0 0 70px #90ee90;
+        0 0 20px #90deee, 
+        0 0 30px #90deee, 
+        0 0 40px #90deee, 
+        0 0 50px #90deee, 
+        0 0 60px #90deee, 
+        0 0 70px #90deee;
 }
+
 .input-container {
     font-size: 1.3em;
     display: flex;
@@ -28,7 +29,7 @@
     padding: 10px;
     border: 1px solid #fff;
     background: transparent;
-    box-shadow: 0 0 10px #90ee90;
+    box-shadow: 0 0 10px #90deee;
     border-radius: 15px;
     margin: 20px;
     padding: 5px;
@@ -52,11 +53,12 @@
     margin-top: 20px;
     width: 10%;
     height: 10%;
+    filter: drop-shadow(0px 0px 20px #90deee);
 }
 
 .login-submit:hover {
     transition: .5s;
-    filter: drop-shadow(0px 0px 20px #90ee90);
-    color: #90ee90;
+    filter: drop-shadow(0px 0px 20px #90deee);
+    color: #90deee;
     transform: translateY(-5px);
 }

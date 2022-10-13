@@ -3,22 +3,22 @@ import { useRef, useState, useContext } from "react"
 import { IoMdLogIn } from "react-icons/io"
 import { API_URLS } from "../../constans/constans"
 import { CurrentComponentContext } from "../../contexts/currentComponent.context"
-import { CityProps, Data, User } from "../../interfaces/interfaces"
-import Profil from "../Profil"
+import { Data, User } from "../../interfaces/interfaces"
+import Home from "../Home"
 import './index.css'
 
-const Login = ({ setUser, setCurrentComponent, setLogged } : CityProps) =>{
-    const [message, setMessage] = useState('')
-
-    const setComponentName = useContext(CurrentComponentContext)
-
+const Register = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatch<React.SetStateAction<React.ReactNode>> }) =>{
     const usernameRef = useRef<HTMLInputElement>(null!)
     const emailRef = useRef<HTMLInputElement>(null!)
     const passwordRef = useRef<HTMLInputElement>(null!)
 
+    const setComponentName = useContext(CurrentComponentContext)
+
+    const [message, setMessage] = useState('')
+
     const handleSubmit = async () =>{
         const { USERS_URL } = API_URLS
-        const API_URL= `${USERS_URL}/login`
+        const API_URL= `${USERS_URL}`
         setMessage('')
 
         try {
@@ -32,13 +32,9 @@ const Login = ({ setUser, setCurrentComponent, setLogged } : CityProps) =>{
             const userData: Data<User> = await axios.post(API_URL, data)
 
             if(userData.data.status === 'succes') {
-                setUser(userData.data.data)
-                setCurrentComponent(<Profil setCurrentComponent={setCurrentComponent} />)
+                setCurrentComponent(<Home />)
                 //@ts-ignore
                 setComponentName('Profil')
-
-                //@ts-ignore
-                setLogged(true)
             } else {
                 setMessage(userData.data.message)
             }
@@ -46,20 +42,19 @@ const Login = ({ setUser, setCurrentComponent, setLogged } : CityProps) =>{
             alert(`Logginng error: ${err}`)
         }
     }
-
-    const Content = () => (
-            <div className="login-container">
-                <h1> Login </h1>
+    return (
+        <div className='register-container'>
+            <h1> Register </h1>
                 <div className="login-form">
-                    <div className="input-container">
+                    <div className="input-container register-input">
                         <label> Username: </label>
                         <input type='text' id='username' ref={usernameRef} />
                     </div>
-                    <div className="input-container">
+                    <div className="input-container register-input">
                         <label> Email: </label>
                         <input type='text' id='email' ref={emailRef} />
                     </div>
-                    <div className="input-container">
+                    <div className="input-container register-input">
                         <label> Password: </label>
                         <input type='password' id='password' ref={passwordRef} />
                     </div>
@@ -67,12 +62,11 @@ const Login = ({ setUser, setCurrentComponent, setLogged } : CityProps) =>{
                         <div className={message !== '' ? "message" :""}> { message } </div>
                     </div>
                     <div className="submit-container">
-                        <IoMdLogIn className="login-submit" onClick={handleSubmit} />
+                        <IoMdLogIn className="login-submit register-submit" onClick={handleSubmit} />
                     </div>
                 </div>
-            </div>
-        )
-    return <Content />
+        </div>
+    )
 }
 
-export default Login
+export default Register

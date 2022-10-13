@@ -8,6 +8,7 @@ import Profil from '../Profil'
 import { UserContext } from '../../contexts/user.context'
 import CreateAnnouncement from '../CreateAnnouncement'
 import { CurrentComponentContext } from '../../contexts/currentComponent.context'
+import Register from '../Register'
 
 const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : NavbarProps) =>{
     const user = useContext(UserContext)
@@ -21,6 +22,10 @@ const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : Nav
         {
             name: 'Announcements',
             href: <AnnouncementsArray />
+        },
+        {
+            name: 'Register',
+            href: <Register setCurrentComponent={setCurrentComponent}/>
         },
         {
             name: 'Profil',
@@ -45,6 +50,21 @@ const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : Nav
     const MapNames = () =>{
         const mapNames = () => names.map(name =>{
             switch(name.name) {
+                case 'Register':
+                    if(user !== undefined){
+                        return <></>
+                    } else {
+                        return (
+                            <button 
+                                className={componentName !== name.name
+                                                ? 'nav-link' 
+                                                : 'nav-link active'}
+                                onClick={() => handleClick(name)}
+                                key={name.name}>
+                                { name.name }
+                            </button>
+                        )
+                    }
                 case 'Login':
                     if(user !== undefined){
                         return <></>
@@ -76,6 +96,21 @@ const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : Nav
                         )
                     }
                 case 'Create Announcement':
+                    if(user === undefined){
+                        return <></>
+                    } else {
+                        return (
+                            <button 
+                                className={componentName !== name.name
+                                                ? 'nav-link' 
+                                                : 'nav-link active'}
+                                onClick={() => handleClick(name)}
+                                key={name.name}>
+                                { name.name }
+                            </button>
+                        )
+                    }
+                case 'Announcements':
                     if(user === undefined){
                         return <></>
                     } else {

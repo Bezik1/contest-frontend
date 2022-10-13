@@ -1,18 +1,26 @@
 import axios from "axios"
-import { useRef } from "react"
+import { useContext, useRef } from "react"
 import { API_URLS } from "../../constans/constans"
+import { UserContext } from "../../contexts/user.context"
 import { Announcement, Response } from "../../interfaces/interfaces"
 import './index.css'
 
 const CreateAnnouncement = ({ from } : { from: string | undefined }) =>{
     const contentRef = useRef<HTMLTextAreaElement>(null!)
+    const titleRef = useRef<HTMLInputElement>(null!)
+
+    const user = useContext(UserContext)
 
     const handleSubmit = async () =>{
         const { ANNOUNCEMENTS_URL } = API_URLS
 
         const content = contentRef.current.value
+        const title = titleRef.current.value
+
         const announcement = {
             from,
+            email: user?.email,
+            title,
             content
         }
 
@@ -23,6 +31,10 @@ const CreateAnnouncement = ({ from } : { from: string | undefined }) =>{
     return (
         <div className='create-announcement'>
             <h1> Create Announcement </h1>
+            <div className="title-container">
+                <label htmlFor="title-input"> Title: </label>
+                <input id="title-input" type="text" ref={titleRef}/>
+            </div>
             <textarea className="content-input" ref={contentRef}/>
             <button type="submit" className="create-submit btn" onClick={handleSubmit}> Create Announcement</button>
         </div>

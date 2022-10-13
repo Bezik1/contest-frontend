@@ -6,11 +6,50 @@
 }
 
 .announcement > h1 {
+    transition: .5s;
+    cursor: pointer;
     color: #ffaad5;
     text-shadow: 0 0 20px #fff;
+}
+
+.announcement > h1:hover {
+    transition: .5s;
+    color: #fcd5e9;
+    text-shadow: 0 0 20px #ffaad5;
+}
+
+.announcement > h2 > span{
+    transition: .5s;
+    cursor: pointer;
+    color: #90deee;
+    text-shadow: 0 0 20px #fff;
+} 
+
+.announcement > h2 > span:hover {
+    transition: .5s;
+    color: #d5f5fb;
+    text-shadow: 0 0 20px #90deee;
 }
 
 .announcement > .announcement-content {
     padding: 20px;
     text-align: center;
+}
+
+.contact {
+    font-size: 1.3em;
+    margin-top: 30px;
+}
+
+.contact > span {
+    transition: .5s;
+    cursor: pointer;
+    color: #ffaad5;
+    text-shadow: 0 0 20px #fff;
+}
+
+.contact > span:hover {
+    transition: .5s;
+    color: #fcd5e9;
+    text-shadow: 0 0 20px #ffaad5;
 }

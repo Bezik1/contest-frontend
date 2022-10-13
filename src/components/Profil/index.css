@@ -34,15 +34,15 @@
     transition: .5s;
     color: #fff;
     margin-top: 25px;
-    background: #794cff;
-    box-shadow:  0 0 40px #794cff;
+    background: #e7579f;
+    box-shadow:  0 0 40px #e7579f;
     border-radius: 50px;
 }
 
 .add-announcement:hover {
     transition: .5s;
-    background-color: #c6b3fe;
-    box-shadow:  0 0 40px #c6b3fe;
+    background-color: #e29dbf;
+    box-shadow:  0 0 40px #e29dbf;
 }
 
 .plus path {
@@ -56,23 +56,23 @@
 .see-announcements {
     transition: .5s;
     color: #fff;
-    background: #3d46df;
-    box-shadow:  0 0 40px #3d46df;
+    background: #90deee;
+    box-shadow:  0 0 40px #90deee;
     margin-top: 25px;
     border-radius: 25px;
 }
 
 .see-announcements:hover {
     transition: .5s;
-    background: #a8adff;
-    box-shadow:  0 0 40px #a8adff;
+    background: #c9e4e9;
+    box-shadow:  0 0 40px #c9e4e9;
 }
 
 .hide-announcements {
     transition: .5s;
     color: #fff;
-    background: #9a9ffd;
-    box-shadow:  0 0 40px #9a9ffd;
+    background: #c9e4e9;
+    box-shadow:  0 0 40px #c9e4e9;
     margin-top: 25px;
     border-radius: 25px;
 }
@@ -80,23 +80,23 @@
 .see-comments {
     transition: .5s;
     color: #fff;
-    background: #fd3636;
-    box-shadow:  0 0 40px #fd3636;
+    background: #e7579f;
+    box-shadow:  0 0 40px #e7579f;
     margin-top: 50px;
     border-radius: 25px;
 }
 
 .see-comments:hover {
     transition: .5s;
-    background: #ffbdbd;
-    box-shadow:  0 0 40px #ffbdbd;
+    background: #e29dbf;
+    box-shadow:  0 0 40px #e29dbf;
 }
 
 .hide-comments {
     transition: .5s;
     color: #fff;
-    background: #ff7272;
-    box-shadow:  0 0 40px #ff7272;
+    background: #e29dbf;
+    box-shadow:  0 0 40px #e29dbf;
     margin-top: 50px;
     border-radius: 25px;
 }

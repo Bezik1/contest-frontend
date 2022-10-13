@@ -2,12 +2,12 @@
     font-size: 2.3em;
     text-shadow: 
         0 0 10px #fff, 
-        0 0 20px #b95910, 
-        0 0 30px #b95910, 
-        0 0 40px #b95910, 
-        0 0 50px #b95910, 
-        0 0 60px #b95910, 
-        0 0 70px #b95910;
+        0 0 20px #90deee, 
+        0 0 30px #90deee, 
+        0 0 40px #90deee, 
+        0 0 50px #90deee, 
+        0 0 60px #90deee, 
+        0 0 70px #90deee;
 }
 
 .create-announcement {
@@ -31,8 +31,8 @@
 .create-submit {
     transition: .5s;
     color: #fff;
-    background: #b95910;
-    box-shadow:  0 0 40px #b95910;
+    background: #90deee;
+    box-shadow:  0 0 40px #90deee;
     margin-top: 50px;
     border-radius: 25px;
 }
@@ -40,6 +40,24 @@
 .create-submit:hover {
     transition: .5s;
     transform: translateY(-4px);
-    background: #ba855c;
-    box-shadow:  0 0 40px #ba855c;
+    background: #b5dce4;
+    box-shadow:  0 0 40px #b5dce4;
+}
+
+#title-input {
+    color: #fff;
+    padding: 20px;
+    border: 1px solid #fff;
+    background: transparent;
+    box-shadow: 0 0 10px #90deee;
+    border-radius: 15px;
+    margin: 20px;
+    padding: 5px;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }

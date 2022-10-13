@@ -4,6 +4,7 @@ export interface Data<T> {
 
 interface Comment {
     from: string;
+    to: string;
     content: string;
     opinion: boolean;
 }
@@ -18,6 +19,8 @@ export interface User {
 
 export interface Announcement {
     from: string;
+    email: string;
+    title: string;
     content: string
 }
 
