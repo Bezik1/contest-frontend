@@ -1,0 +1,71 @@
+.users-container {
+    margin-right: 300px;
+}
+
+.users-container > h1 {
+    text-align: center;
+    font-size: 2.3em;
+    text-shadow: 
+        0 0 10px #fff, 
+        0 0 20px #90deee, 
+        0 0 30px #90deee, 
+        0 0 40px #90deee, 
+        0 0 50px #90deee, 
+        0 0 60px #90deee, 
+        0 0 70px #90deee;
+}
+
+.users-searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.users-searchbar > #searchbar {
+    border-radius: 15px;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    border: none;
+    box-shadow: 0 0 10px #90deee;
+}
+
+.users-searchbar > .searchbar-label {
+    margin-right: 20px;
+}
+
+.users-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.user {
+    margin-top: 25px;
+    width: 75%;
+    padding: 10px;
+    background-color: #573574;
+    text-align: center;
+}
+
+.user > h1 {
+    cursor: pointer;
+    text-shadow: 
+        0 0 10px #fff, 
+        0 0 20px #ff69b4, 
+        0 0 30px #ff69b4, 
+        0 0 40px #ff69b4, 
+        0 0 50px #ff69b4, 
+        0 0 60px #ff69b4, 
+        0 0 70px #ff69b4;
+}
+
+.user > h2 {
+    text-shadow:
+        0 0 10px #75cbe8,
+        0 0 20px #75cbe8,
+        0 0 30px #75cbe8,
+        0 0 40px #75cbe8;
+}

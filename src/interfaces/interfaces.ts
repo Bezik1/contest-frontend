@@ -2,7 +2,7 @@ export interface Data<T> {
     data: Response<T>
 }
 
-interface Comment {
+export interface Comment {
     from: string;
     to: string;
     content: string;

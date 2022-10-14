@@ -28,7 +28,6 @@ const AnnouncementsArray = () =>{
         } else {
             setData(filterData)
         }
-        console.log(e.currentTarget.value)
     }
 
     return (

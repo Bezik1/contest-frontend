@@ -9,6 +9,7 @@ import { UserContext } from '../../contexts/user.context'
 import CreateAnnouncement from '../CreateAnnouncement'
 import { CurrentComponentContext } from '../../contexts/currentComponent.context'
 import Register from '../Register'
+import Users from '../Users'
 
 const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : NavbarProps) =>{
     const user = useContext(UserContext)
@@ -39,6 +40,10 @@ const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : Nav
             name: 'Home',
             href: <Home />
         },
+        {
+            name: 'Users',
+            href: <Users />
+        }
     ]
 
     const handleClick = ({ name, href} : { name: string, href: React.ReactNode}) =>{
@@ -50,6 +55,21 @@ const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : Nav
     const MapNames = () =>{
         const mapNames = () => names.map(name =>{
             switch(name.name) {
+                case 'Users':
+                    if(user === undefined){
+                        return <></>
+                    } else {
+                        return (
+                            <button 
+                                className={componentName !== name.name
+                                                ? 'nav-link' 
+                                                : 'nav-link active'}
+                                onClick={() => handleClick(name)}
+                                key={name.name}>
+                                { name.name }
+                            </button>
+                        )
+                    }
                 case 'Register':
                     if(user !== undefined){
                         return <></>

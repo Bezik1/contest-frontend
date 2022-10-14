@@ -13,6 +13,7 @@ import Register from '../Register'
 import Home from '../Home'
 import CreateAnnouncement from '../CreateAnnouncement'
 import { UserContext } from '../../contexts/user.context'
+import Users from '../Users'
 
 const City = ({ setCurrentComponent, setUser, logged, setLogged } : CityProps) =>{
     const [hover, setHover] = useState([false, ''])
@@ -22,6 +23,11 @@ const City = ({ setCurrentComponent, setUser, logged, setLogged } : CityProps) =
     
     const handleClick = (clickType: string) =>{
         switch(clickType){
+            case 'Users':
+                setCurrentComponent(<Users />)
+                //@ts-ignore
+                setComponentName('Users')
+                break
             case 'Home':
                 setCurrentComponent(<Home />)
                 //@ts-ignore
@@ -130,6 +136,19 @@ const City = ({ setCurrentComponent, setUser, logged, setLogged } : CityProps) =
                     anchorY="middle" // default
                 >
                     { logged ? 'Logout' : 'Login' }
+                </Text>
+                <Text
+                    onPointerOver={() => setHover([true, 'Users'])}
+                    onPointerOut={() => setHover([false, 'Users'])}
+                    onClick={() => handleClick('Users')}
+                    scale={[2.5, 2.5, 2.5]}
+                    rotation={[0, 0.6, 0]}
+                    position={[-0.85, -1.45, -2.2]}
+                    color={hover[0] && hover[1] === 'Users' ? "white" : "aqua"}
+                    anchorX="center" // default
+                    anchorY="middle" // default
+                >
+                    { logged ? 'Users' : null }
                 </Text>
                 <Text
                     onPointerOver={() => setHover([true, 'Register'])}

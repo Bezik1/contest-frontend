@@ -21,7 +21,7 @@
 .content-input {
     width: 80%;
     height: 200px;
-    border: 1px solid #fff;
+    box-shadow:  0 0 10px #90deee;
     color: #fff;
     background: transparent;
     margin: 20px;
@@ -33,7 +33,7 @@
     color: #fff;
     background: #90deee;
     box-shadow:  0 0 40px #90deee;
-    margin-top: 50px;
+    margin-top: 20px;
     border-radius: 25px;
 }
 

@@ -1,11 +1,9 @@
 import { useState, useEffect, useContext } from "react"
-import { GrAdd } from "react-icons/gr"
 import { API_URLS } from "../../constans/constans"
 import { CurrentComponentContext } from "../../contexts/currentComponent.context"
 import { UserContext } from "../../contexts/user.context"
 import { useFetch } from "../../hooks/useFetch"
 import { Announcement } from '../../interfaces/interfaces'
-import CreateAnnouncement from "../CreateAnnouncement"
 import './index.css'
 
 const Profil = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatch<React.SetStateAction<React.ReactNode>> }) =>{
@@ -66,12 +64,6 @@ const Profil = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatch<
         })
     }
 
-    const handleClick = () =>{
-        //@ts-ignore
-        setComponentName('Create Announcement')
-        setCurrentComponent(<CreateAnnouncement from={user?.username} />)
-    }
-
     const UserAnnouncements = () =>{
         if(announcementClicked){
             return (
@@ -125,11 +117,6 @@ const Profil = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatch<
                 <div className="announcements-array">
                     <UserAnnouncements />
                 </div>
-                <button 
-                    className='btn add-announcement' 
-                    onClick={handleClick}> 
-                    Create Announcement <GrAdd className="plus"/> 
-                </button>
             </div>
         </div>
     )
