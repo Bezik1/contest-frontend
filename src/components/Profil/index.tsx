@@ -1,19 +1,18 @@
 import { useState, useEffect, useContext } from "react"
+import { FcLike, FcLikePlaceholder } from "react-icons/fc"
 import { API_URLS } from "../../constans/constans"
-import { CurrentComponentContext } from "../../contexts/currentComponent.context"
 import { UserContext } from "../../contexts/user.context"
 import { useFetch } from "../../hooks/useFetch"
-import { Announcement } from '../../interfaces/interfaces'
+import { Announcement, Comment } from '../../interfaces/interfaces'
 import './index.css'
 
-const Profil = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatch<React.SetStateAction<React.ReactNode>> }) =>{
+const Profil = () =>{
     const [clicked, click] = useState(false)
 
     const { ANNOUNCEMENTS_URL } = API_URLS
     const [data] = useFetch<Announcement[]>(ANNOUNCEMENTS_URL)
 
     const user = useContext(UserContext)
-    const setComponentName = useContext(CurrentComponentContext)
 
     const [announcementClicked, setAnnouncementClicked] = useState(false)
     const [commentsClicked, setCommentsClicked] = useState(false)
@@ -23,15 +22,25 @@ const Profil = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatch<
         setUserAnnouncements(data?.data)
     }, [data])
 
-    const commentsMap = () =>{
-        return user?.comments.map(comment =>(
-            <div className='comment'>
-                <h1> { comment.from } </h1>
-                <div className='comment-content'>
-                    { comment.content }
+    const commentsMap = (comments: Comment[] | undefined) =>{
+        //@ts-ignore
+        return comments.map(comment =>{
+
+            const IfCommentOpinion = () =>{
+                if(comment.opinion) return <FcLike className='like' />
+                else return <FcLikePlaceholder className='dislike' />
+            }
+
+            return (
+                <div className='profil-comment'>
+                    <h1> { comment.from } </h1>
+                    <div className='comment-content'>
+                        { comment.content }
+                     </div>
+                    <IfCommentOpinion />
                 </div>
-            </div>
-        ))
+            )
+        })
     }
 
 
@@ -85,7 +94,7 @@ const Profil = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatch<
         }
     }
 
-    const UserComments = () =>{
+    const UserComments = ({ comments } : { comments: Comment[] | undefined}) =>{
         if(commentsClicked){
             return (
                 <>
@@ -94,7 +103,7 @@ const Profil = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatch<
                         onClick={() => setCommentsClicked(!commentsClicked)}> 
                         Hide your comments 
                     </button>
-                    { commentsMap() }
+                    { commentsMap(comments) }
                 </>
             )
         } else {
@@ -112,7 +121,7 @@ const Profil = ({ setCurrentComponent } : { setCurrentComponent: React.Dispatch<
             <div className="profil-content">
                 <div className="user-email"> Email: <span>{ user?.email }</span> </div>
                 <div className="user-comments-container">
-                    <UserComments />
+                    <UserComments comments={user?.comments} />
                 </div>
                 <div className="announcements-array">
                     <UserAnnouncements />

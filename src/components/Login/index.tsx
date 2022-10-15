@@ -33,7 +33,7 @@ const Login = ({ setUser, setCurrentComponent, setLogged } : CityProps) =>{
 
             if(userData.data.status === 'succes') {
                 setUser(userData.data.data)
-                setCurrentComponent(<Profil setCurrentComponent={setCurrentComponent} />)
+                setCurrentComponent(<Profil />)
                 //@ts-ignore
                 setComponentName('Profil')
 

@@ -7,6 +7,55 @@
     font-size: 2.3em;
 }
 
+.user-comments-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profil-comment {
+    margin-top: 20px;
+    width: 80%;
+    padding: 10px;
+    background-color: #573574;
+}
+.profil-comment > h1 {
+    cursor: pointer;
+    text-shadow:
+        0 0 10px #75cbe8,
+        0 0 20px #75cbe8,
+        0 0 30px #75cbe8,
+        0 0 40px #75cbe8;
+}
+
+.profil-comment > .like {
+    transition: .5s;
+    cursor: pointer;
+    margin-top: 40px;
+    width: 50px;
+    height: 50px;
+}
+
+.profil-comment > .like:hover {
+    transition: .5s;
+    transform: translateY(-5px);
+}
+
+.profil-comment > .dislike {
+    transition: .5s;
+    cursor: pointer;
+    margin-top: 40px;
+    width: 50px;
+    height: 50px;
+    filter: opacity(20%);
+}
+
+.profil-comment > .dislike:hover {
+    transition: .5s;
+    transform: translateY(-5px);
+}
+
 .profil > h1 > span {
     text-shadow: 
         0 0 10px #fff, 

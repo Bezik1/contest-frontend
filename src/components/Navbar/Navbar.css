@@ -5,12 +5,14 @@ body {
 .nav {
     filter: opacity(80%);
     position: sticky;
-    padding-top: 50px;
+    margin-top: 25px;
+    padding-top: 25px;
     top: 0;
     width: 100%;
     z-index: 5;
     color: #dff4fe;
     height: 75px;
+    background: #101428;
 }
 
 .logo-container {
@@ -25,8 +27,7 @@ body {
 
 .nav-links {
     margin-top: 2px;
-    padding-left: 20px;
-    margin-left: 180px;
+    padding-left: 150px;
     display: flex;
     flex-direction: row;
     align-items: center;

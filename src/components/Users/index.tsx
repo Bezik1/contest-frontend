@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { FcLike, FcLikePlaceholder } from "react-icons/fc"
 import { Comment } from '../../interfaces/interfaces'
 import { useFetch } from '../../hooks/useFetch'
 import { API_URLS } from '../../constans/constans'
@@ -6,6 +7,7 @@ import './index.css'
 
 const Users = () =>{
     const [clicked, click] = useState([false, ''])
+    const [comment, setComment] = useState(false)
     const [users, setUsers] = useState<{ username: string, email: string, comments: Comment[]}[]>([])
 
     const { USERS_URL } = API_URLS
@@ -31,26 +33,39 @@ const Users = () =>{
 
     const mapUsers = () =>{
         return users?.map(user =>{
-
+            
             const IfClicked = () =>{
+
                 const commentsMap = () =>{
-                    return user.comments.map(comment =>(
-                        <div className='comment'>
-                            <h1> { comment.from } </h1>
-                            <div className='comment-content'>
-                                { comment.content }
+                    return user.comments.map(comment =>{
+
+                        const IfCommentOpinion = () =>{
+                            if(comment.opinion) return <FcLike className='like' />
+                            else return <FcLikePlaceholder className='dislike' />
+                        }
+
+                        return (
+                            <div className='comment'>
+                                <h1> { comment.from } </h1>
+                                <div className='comment-content'>
+                                    { comment.content }
+                                 </div>
+                                <IfCommentOpinion />
                             </div>
-                        </div>
-                    ))
+                        )
+                    })
                 }
+
+                const Comments = () => <> { commentsMap() } </>
+                
 
                 if(clicked[0] && clicked[1] === user.username){
                     return (
                         <>
                             <h2> { user.email } </h2>
                             <div className='comments'>
-                                <h2> Comments </h2>
-                                {commentsMap()}
+                                { comment ? <Comments /> : null}
+                                <button className='btn comments-btn' onClick={() => setComment(!comment)}> Comments </button>
                             </div>
                         </>
                     )

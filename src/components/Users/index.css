@@ -46,26 +46,105 @@
     margin-top: 25px;
     width: 75%;
     padding: 10px;
-    background-color: #573574;
+    background-color: #312b60;
     text-align: center;
 }
 
 .user > h1 {
+    transition: .5s;
     cursor: pointer;
     text-shadow: 
         0 0 10px #fff, 
-        0 0 20px #ff69b4, 
-        0 0 30px #ff69b4, 
-        0 0 40px #ff69b4, 
-        0 0 50px #ff69b4, 
-        0 0 60px #ff69b4, 
-        0 0 70px #ff69b4;
+        0 0 20px #90deee, 
+        0 0 30px #90deee, 
+        0 0 40px #90deee, 
+        0 0 50px #90deee, 
+        0 0 60px #90deee, 
+        0 0 70px #90deee;
+}
+
+.user > h1:hover {
+    transition: .5s;
+    text-shadow:
+        0 0 10px #aed5e2,
+        0 0 20px #aed5e2,
+        0 0 30px #aed5e2,
+        0 0 40px #aed5e2;
 }
 
 .user > h2 {
+    text-shadow:
+        0 0 10px #ff69b4,
+        0 0 20px #ff69b4,
+        0 0 30px #ff69b4,
+        0 0 40px #ff69b4;
+}
+
+.comments-btn {
+    margin-top: 20px;
+    transition: .5s;
+    color: #fff;
+    border-radius: 25px;
+    background: #ff69b4;
+    box-shadow: 0 0 40px #ff69b4;
+}
+
+.comments-btn:hover {
+    transition: .5s;
+    background: #ff9dce;
+    box-shadow: 0 0 40px #ff9dce;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment {
+    margin-top: 20px;
+    width: 80%;
+    padding: 10px;
+    background-color: #373a58;
+}
+
+.comment > h1 {
+    cursor: pointer;
     text-shadow:
         0 0 10px #75cbe8,
         0 0 20px #75cbe8,
         0 0 30px #75cbe8,
         0 0 40px #75cbe8;
+}
+
+.comment > .like {
+    transition: .5s;
+    cursor: pointer;
+    margin-top: 40px;
+    width: 50px;
+    height: 50px;
+}
+
+.comment > .like:hover {
+    transition: .5s;
+    transform: translateY(-5px);
+}
+
+.comment > .dislike {
+    transition: .5s;
+    cursor: pointer;
+    margin-top: 40px;
+    width: 50px;
+    height: 50px;
+    filter: opacity(20%);
+}
+
+.comment > .dislike:hover {
+    transition: .5s;
+    transform: translateY(-5px);
+}
+
+.comment-content {
+    margin: 5px;
 }

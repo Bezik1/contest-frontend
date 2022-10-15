@@ -14,6 +14,7 @@ import Home from '../Home'
 import CreateAnnouncement from '../CreateAnnouncement'
 import { UserContext } from '../../contexts/user.context'
 import Users from '../Users'
+import CreateComment from '../CreateComment'
 
 const City = ({ setCurrentComponent, setUser, logged, setLogged } : CityProps) =>{
     const [hover, setHover] = useState([false, ''])
@@ -23,6 +24,11 @@ const City = ({ setCurrentComponent, setUser, logged, setLogged } : CityProps) =
     
     const handleClick = (clickType: string) =>{
         switch(clickType){
+            case 'Create Comment':
+                setCurrentComponent(<CreateComment />)
+                //@ts-ignore
+                setComponentName('Create Comment')
+                break
             case 'Users':
                 setCurrentComponent(<Users />)
                 //@ts-ignore
@@ -67,7 +73,7 @@ const City = ({ setCurrentComponent, setUser, logged, setLogged } : CityProps) =
                 break
             case 'Profil':
                 if(logged){
-                    setCurrentComponent(<Profil setCurrentComponent={setCurrentComponent} />)
+                    setCurrentComponent(<Profil />)
                     //@ts-ignore
                     setComponentName('Profil')
                 }
@@ -188,6 +194,19 @@ const City = ({ setCurrentComponent, setUser, logged, setLogged } : CityProps) =
                     anchorY="middle" // default
                 >
                     { logged ? 'Announcements' : null }
+                </Text>
+                <Text
+                    onPointerOver={() => setHover([true, 'Create Comment'])}
+                    onPointerOut={() => setHover([false, 'Create Comment'])}
+                    onClick={() => handleClick('Create Comment')}
+                    scale={[2.5, 2.5, 2.5]}
+                    rotation={[0, -1, 0]}
+                    position={[2, -1.55, -1.25]}
+                    color={hover[0] && hover[1] === 'Create Comment' ? "white" : "aqua"}
+                    anchorX="center" // default
+                    anchorY="middle" // default
+                >
+                    { logged ? 'Create Comment' : null }
                 </Text>
                 <Text
                     onPointerOver={() => setHover([true, 'Create Announcement'])}

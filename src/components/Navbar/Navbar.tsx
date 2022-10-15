@@ -10,6 +10,7 @@ import CreateAnnouncement from '../CreateAnnouncement'
 import { CurrentComponentContext } from '../../contexts/currentComponent.context'
 import Register from '../Register'
 import Users from '../Users'
+import CreateComment from '../CreateComment'
 
 const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : NavbarProps) =>{
     const user = useContext(UserContext)
@@ -30,7 +31,7 @@ const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : Nav
         },
         {
             name: 'Profil',
-            href: <Profil setCurrentComponent={setCurrentComponent}/>
+            href: <Profil />
         },
         {
             name: 'Create Announcement',
@@ -43,6 +44,14 @@ const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : Nav
         {
             name: 'Users',
             href: <Users />
+        },
+        {
+            name: 'Create Comment',
+            href: <CreateComment />
+        },
+        {
+            name: 'Logout',
+            href: <></>
         }
     ]
 
@@ -55,6 +64,36 @@ const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : Nav
     const MapNames = () =>{
         const mapNames = () => names.map(name =>{
             switch(name.name) {
+                case 'Logout':
+                    if(user === undefined){
+                        return <></>
+                    } else {
+                        return (
+                            <button 
+                                className={componentName !== name.name
+                                                ? 'nav-link' 
+                                                : 'nav-link active'}
+                                onClick={() => window.location.reload()}
+                                key={name.name}>
+                                { name.name }
+                            </button>
+                        )
+                    }
+                case 'Create Comment':
+                    if(user === undefined){
+                        return <></>
+                    } else {
+                        return (
+                            <button 
+                                className={componentName !== name.name
+                                                ? 'nav-link' 
+                                                : 'nav-link active'}
+                                onClick={() => handleClick(name)}
+                                key={name.name}>
+                                { name.name }
+                            </button>
+                        )
+                    }
                 case 'Users':
                     if(user === undefined){
                         return <></>
