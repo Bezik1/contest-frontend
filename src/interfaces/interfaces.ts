@@ -18,6 +18,7 @@ export interface User {
 }
 
 export interface Announcement {
+    _id?: string;
     from: string;
     email: string;
     title: string;

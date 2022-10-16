@@ -78,3 +78,21 @@
     width: 250px;
     height: auto;
 }
+
+@media only screen and (max-width: 1200px) {
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .input-container > label {
+        margin-left: 40px;
+    }
+
+    .input-container > input {
+        margin-left: 40px;
+        width: 150px;
+    }
+}

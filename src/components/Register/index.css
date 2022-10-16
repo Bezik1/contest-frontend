@@ -10,3 +10,12 @@
         0 0 60px #90deee, 
         0 0 70px #90deee;
 }
+
+@media only screen and (max-width: 1200px) {
+    .register-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

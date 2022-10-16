@@ -1,10 +1,12 @@
 import { useState, useEffect, useContext } from "react"
 import { FcLike, FcLikePlaceholder } from "react-icons/fc"
+import { AiFillDelete } from "react-icons/ai"
 import { API_URLS } from "../../constans/constans"
 import { UserContext } from "../../contexts/user.context"
 import { useFetch } from "../../hooks/useFetch"
-import { Announcement, Comment } from '../../interfaces/interfaces'
+import { Announcement, Comment, Response } from '../../interfaces/interfaces'
 import './index.css'
+import axios from "axios"
 
 const Profil = () =>{
     const [clicked, click] = useState(false)
@@ -21,6 +23,21 @@ const Profil = () =>{
     useEffect(() =>{
         setUserAnnouncements(data?.data)
     }, [data])
+
+    const handleDelete = async (id: string) =>{
+        const { ANNOUNCEMENTS_URL } = API_URLS
+        const API_URL = `${ANNOUNCEMENTS_URL}/${id}`
+
+        const res: Response<Response<Announcement>> = await axios.delete(API_URL)
+        
+        if(res.data.status === 'succes'){
+            console.log(res.data.message)
+
+            const newData = data?.data
+            newData.filter(announcement => announcement._id === id)
+            setUserAnnouncements(newData)
+        }
+    }
 
     const commentsMap = (comments: Comment[] | undefined) =>{
         //@ts-ignore
@@ -49,7 +66,7 @@ const Profil = () =>{
         return userAnnouncements?.filter(
             userAnnouncement => userAnnouncement.from === user?.username).map(
             userAnnouncement => {
-                const { from, email, title, content } = userAnnouncement
+                const { _id, from, email, title, content } = userAnnouncement
 
                 const IFClicked = () =>{
                     if(clicked){
@@ -57,6 +74,7 @@ const Profil = () =>{
                             <div className='announcement-content'>
                             { content }
                             <div className="contact"> Contact email: <span> { email } </span></div>
+                            <AiFillDelete onClick={() => handleDelete(String(_id))} className="delete-announcement"/>
                         </div>
                         )
                     } else {
@@ -120,11 +138,13 @@ const Profil = () =>{
             <h1> Username: <span>{ user?.username }</span> </h1>
             <div className="profil-content">
                 <div className="user-email"> Email: <span>{ user?.email }</span> </div>
-                <div className="user-comments-container">
-                    <UserComments comments={user?.comments} />
-                </div>
-                <div className="announcements-array">
-                    <UserAnnouncements />
+                <div className="profil-btns">
+                    <div className="user-comments-container">
+                        <UserComments comments={user?.comments} />
+                    </div>
+                    <div className="announcements-array">
+                        <UserAnnouncements />
+                    </div>
                 </div>
             </div>
         </div>

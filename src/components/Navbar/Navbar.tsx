@@ -1,5 +1,6 @@
 import './Navbar.css'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
+import { RiMenu2Line } from "react-icons/ri"
 import AnnouncementsArray from '../Announcements'
 import Login from '../Login'
 import { NavbarProps } from '../../interfaces/interfaces'
@@ -11,8 +12,11 @@ import { CurrentComponentContext } from '../../contexts/currentComponent.context
 import Register from '../Register'
 import Users from '../Users'
 import CreateComment from '../CreateComment'
+import ResponsiveComponent from '../ResponsiveComponent'
 
 const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : NavbarProps) =>{
+    const [opacity, setOpacity] = useState(true)
+
     const user = useContext(UserContext)
     const setComponentName = useContext(CurrentComponentContext)
 
@@ -200,12 +204,30 @@ const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : Nav
 
         return <div className='nav-links'>{ mapNames() } </ div >
     }
+
+    const IfOpacity = () =>{
+        if(opacity){
+            return (
+                <div className='nav' id='nav'>
+                    <MapNames />
+                </div>
+            )
+        } else {
+            return <></>
+        }
+    }
+
     return (
-        <div className='nav' id='nav'>
-            <div className='logo-container'>
-            </div>
-            <MapNames />
-        </div>
+        <>
+            <ResponsiveComponent>
+                <div className='logo-container'>
+                    <RiMenu2Line 
+                        className={`logo ${opacity ? 'logo-active' : null}`} 
+                        onClick={() => setOpacity(!opacity)}/>
+                </div>
+            </ResponsiveComponent>
+            <IfOpacity />
+        </>
     )
 }
 

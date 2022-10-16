@@ -9,7 +9,7 @@ body {
     padding-top: 25px;
     top: 0;
     width: 100%;
-    z-index: 5;
+    z-index: 4;
     color: #dff4fe;
     height: 75px;
     background: #101428;
@@ -27,7 +27,6 @@ body {
 
 .nav-links {
     margin-top: 2px;
-    padding-left: 150px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -74,9 +73,59 @@ body {
     background-color: #011c29;
 }
 
+.logo-container {
+    width: 20%;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
 @media only screen and (max-width: 1470px) {
     .nav-link {
         margin-top: 10px;
         font-size: 0.6em;
     }
-  }
+}
+
+@media only screen and (max-width: 1200px) {
+    .nav-links {
+        width: 100%;
+        font-size: auto;
+    }
+    .nav-link {
+        font-size: 1rem;
+    }
+    .nav-links {
+        margin-top: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: left;
+        background-color: #101428;
+    }
+
+    .nav {
+        margin-top: 0;
+        width: 50%;
+        background-color: #101428;
+        position: fixed;
+        height: 100%;
+    }
+
+    .logo-container {
+        z-index: 5;
+        background-color: #101428;
+    }
+        
+    .logo {
+        z-index: 5;
+        margin: 40px;
+        background-color: #101428;
+    }
+
+    .logo-active {
+        margin-left: 90%;
+    }
+}

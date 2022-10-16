@@ -57,13 +57,13 @@ const Home = () =>{
     }, [clicked, setBtnVisible])
 
     return (
-        <>
+        <div className='homes'>
             <h1> Witamy w <span> Sąsiedztwie </span> { user?.username }</h1>
             <div className='home-content'>
                 Strona ta ma służyć rozwijaniu się społeczności danego miasta, oraz zacieśniać więzi między mieszkańcami poprzez wzajemną pomoc.
             </div>
             <IFBtnVisible />
-        </>
+        </div>
     )
 }
 

@@ -148,3 +148,9 @@
 .comment-content {
     margin: 5px;
 }
+
+@media only screen and (max-width: 1200px) {
+    .users-container {
+        margin-right: 0;
+    }
+}

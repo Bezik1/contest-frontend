@@ -2,11 +2,11 @@
     font-size: 1.1em;
 }
 
-.home-container > h1 {
+.homes > h1 {
     font-size: 2.3em;
 }
 
-.home-container > h1 > span {
+.homes > h1 > span {
     text-shadow: 
         0 0 10px #fff, 
         0 0 20px #e7579f, 
@@ -39,4 +39,10 @@
     transform: translateY(-4px);
     background-color: #db6ce7;
     box-shadow:  0 0 40px #d88cb2;
+}
+
+@media only screen and (max-width: 1200px) {
+    .homes {
+        margin: 20px;
+    }
 }

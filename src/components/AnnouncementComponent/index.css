@@ -53,3 +53,9 @@
     color: #fcd5e9;
     text-shadow: 0 0 20px #ffaad5;
 }
+
+@media only screen and (max-width: 1200px) {
+    .announcement {
+        width: 250px;
+    }
+}
