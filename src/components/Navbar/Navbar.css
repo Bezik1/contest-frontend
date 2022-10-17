@@ -3,6 +3,7 @@ body {
 }
 
 .nav {
+    transition: .5s;
     filter: opacity(80%);
     position: sticky;
     margin-top: 25px;
@@ -15,14 +16,23 @@ body {
     background: #101428;
 }
 
+.transparent {
+    transition: .5s;
+    background: transparent;
+}
+
 .logo-container {
-    width: 15px; 
-    height: 15px;
+    position: fixed;
+    width: 100%; 
+    height: 100px;
+    background: #101428;
+    filter: opacity(80%);
 }
 
 .logo {
     width: 75px;
     height: 75px;
+    filter: opacity(80%);
 }
 
 .nav-links {
@@ -95,7 +105,7 @@ body {
         font-size: auto;
     }
     .nav-link {
-        font-size: 1rem;
+        font-size: 1.02rem;
     }
     .nav-links {
         margin-top: 80px;
@@ -116,13 +126,11 @@ body {
 
     .logo-container {
         z-index: 5;
-        background-color: #101428;
     }
         
     .logo {
         z-index: 5;
         margin: 40px;
-        background-color: #101428;
     }
 
     .logo-active {

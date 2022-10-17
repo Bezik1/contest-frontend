@@ -1,5 +1,5 @@
 import './Navbar.css'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { RiMenu2Line } from "react-icons/ri"
 import AnnouncementsArray from '../Announcements'
 import Login from '../Login'
@@ -16,6 +16,18 @@ import ResponsiveComponent from '../ResponsiveComponent'
 
 const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : NavbarProps) =>{
     const [opacity, setOpacity] = useState(true)
+    const [scroll, setScroll] = useState(true)
+    const navRef = useRef<HTMLDivElement>(null!)
+
+    useEffect(() =>{
+        window.addEventListener('scroll', () =>{
+            if(window.scrollY === 0){
+                setScroll(true)
+            } else {
+                setScroll(false)
+            }
+        })
+    })
 
     const user = useContext(UserContext)
     const setComponentName = useContext(CurrentComponentContext)
@@ -208,7 +220,7 @@ const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : Nav
     const IfOpacity = () =>{
         if(opacity){
             return (
-                <div className='nav' id='nav'>
+                <div className={`nav ${scroll ? 'transparent' : null}`} id='nav' ref={navRef}>
                     <MapNames />
                 </div>
             )
