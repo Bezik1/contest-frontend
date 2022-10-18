@@ -42,16 +42,10 @@
 }
 
 .contact > span {
+    cursor: default;
     transition: .5s;
-    cursor: pointer;
     color: #ffaad5;
     text-shadow: 0 0 20px #fff;
-}
-
-.contact > span:hover {
-    transition: .5s;
-    color: #fcd5e9;
-    text-shadow: 0 0 20px #ffaad5;
 }
 
 @media only screen and (max-width: 1200px) {

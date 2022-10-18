@@ -15,9 +15,10 @@ const Home = () =>{
             return (
                 <div ref={homeRef}>
                     <div className='home-content'>
-                        <br /> Każdy mieszkaniec / użytkownik aplikacji, będzie mógł wydać ogłoszenie
-                        <br /> w sekcji Ogłoszenia, odnośnie swojego problemu, a osoby skore do
-                        <br /> pomocy mogłyby zgłaszać się do ogłoszeń. 
+                        <br />
+                        Each resident / user of the application will be able to publish an advertisement
+                        in the Announcements section, regarding your problem, and people willing to
+                        help could apply for announcements.
                     </div>
                     <button
                         className='home-btn btn' 
@@ -58,9 +59,9 @@ const Home = () =>{
 
     return (
         <div className='homes'>
-            <h1> Witamy w <span> Sąsiedztwie </span> { user?.username }</h1>
+            <h1> Welcome to <span> Neighborhood </span> { user?.username }</h1>
             <div className='home-content'>
-                Strona ta ma służyć rozwijaniu się społeczności danego miasta, oraz zacieśniać więzi między mieszkańcami poprzez wzajemną pomoc.
+                This website aims to develop the community of a given city and strengthen ties between residents through mutual help.
             </div>
             <IFBtnVisible />
         </div>

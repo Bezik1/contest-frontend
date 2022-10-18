@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { API_URLS } from '../../constans/constans'
 import { useFetch } from '../../hooks/useFetch'
 import { Announcement } from '../../interfaces/interfaces'
 import AnnouncementComponent from '../AnnouncementComponent'
 import './index.css'
 
-const AnnouncementsArray = () =>{
+const AnnouncementsArray = ({ setCurrentComponent } 
+        : { setCurrentComponent: React.Dispatch<React.SetStateAction<React.ReactNode>> }) =>{
+    
     const { ANNOUNCEMENTS_URL } = API_URLS
     const [announcements] = useFetch<Announcement[]>(ANNOUNCEMENTS_URL)
     const previousAnnouncements = announcements?.data
@@ -16,7 +18,10 @@ const AnnouncementsArray = () =>{
     }, [announcements])
 
     const announcementsMap = () =>{
-        return data?.map(announcement => <AnnouncementComponent announcement={announcement} />)
+        return data?.map(announcement => <AnnouncementComponent 
+                                            setCurrentComponent={setCurrentComponent} 
+                                            announcement={announcement} 
+                                        />)
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>{

@@ -39,7 +39,7 @@ const Navbar = ({ componentName, setCurrentComponent, setUser, setLogged } : Nav
         },
         {
             name: 'Announcements',
-            href: <AnnouncementsArray />
+            href: <AnnouncementsArray setCurrentComponent={setCurrentComponent} />
         },
         {
             name: 'Register',

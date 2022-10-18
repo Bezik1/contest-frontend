@@ -5,8 +5,17 @@ import { useFetch } from '../../hooks/useFetch'
 import { API_URLS } from '../../constans/constans'
 import './index.css'
 
-const Users = () =>{
-    const [clicked, click] = useState([false, ''])
+const Users = ({ choosenUserName } : { choosenUserName?: string }) =>{
+
+    const ifChoosenUserName = () =>{
+        if(typeof choosenUserName === undefined){
+            return false
+        } else {
+            return true
+        }
+    }
+
+    const [clicked, click] = useState([ifChoosenUserName(), String(choosenUserName)])
     const [comment, setComment] = useState(false)
     const [users, setUsers] = useState<{ username: string, email: string, comments: Comment[]}[]>([])
 

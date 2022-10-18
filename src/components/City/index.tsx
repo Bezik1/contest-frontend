@@ -50,7 +50,7 @@ const City = ({ setCurrentComponent, setUser, logged, setLogged } : CityProps) =
                 setComponentName('Register')
                 break
             case 'Announcements':
-                setCurrentComponent(<AnnouncementsArray />)
+                setCurrentComponent(<AnnouncementsArray setCurrentComponent={setCurrentComponent}/>)
                 //@ts-ignore
                 setComponentName('Announcements')
                 break
