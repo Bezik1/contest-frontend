@@ -3,8 +3,8 @@ export const URLS = {
 }
 
 export const API_URLS = {
-    ANNOUNCEMENTS_URL: "http://localhost:3000/announcements",
-    USERS_URL: "http://localhost:3000/users"
+    ANNOUNCEMENTS_URL: "https://contest-neighborhood.herokuapp.com/users", // "http://localhost:3000/announcements" - localhost
+    USERS_URL:  "https://contest-neighborhood.herokuapp.com/users" //"http://localhost:3000/users" - localhost
 }
 
 export const SYMBOLS = [

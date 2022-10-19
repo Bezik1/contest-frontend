@@ -120,29 +120,17 @@
 
 .comment > .like {
     transition: .5s;
-    cursor: pointer;
     margin-top: 40px;
     width: 50px;
     height: 50px;
-}
-
-.comment > .like:hover {
-    transition: .5s;
-    transform: translateY(-5px);
 }
 
 .comment > .dislike {
     transition: .5s;
-    cursor: pointer;
     margin-top: 40px;
     width: 50px;
     height: 50px;
     filter: opacity(20%);
-}
-
-.comment > .dislike:hover {
-    transition: .5s;
-    transform: translateY(-5px);
 }
 
 .comment-content {
