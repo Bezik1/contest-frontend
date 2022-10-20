@@ -70,4 +70,8 @@
     .content-input {
         width: 250px;
     }
+
+    #title-input {
+        border: 1px solid #fff;
+    }
 }

@@ -68,4 +68,8 @@
     .create-comment {
         margin-right: 0;
     }
+
+    #to-input {
+        border: 1px solid #fff;
+    }
 }

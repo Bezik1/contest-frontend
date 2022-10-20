@@ -3,7 +3,7 @@ export const URLS = {
 }
 
 export const API_URLS = {
-    ANNOUNCEMENTS_URL: "https://contest-neighborhood.herokuapp.com/users", // "http://localhost:3000/announcements" - localhost
+    ANNOUNCEMENTS_URL: "https://contest-neighborhood.herokuapp.com/announcements", // "http://localhost:3000/announcements" - localhost
     USERS_URL:  "https://contest-neighborhood.herokuapp.com/users" //"http://localhost:3000/users" - localhost
 }
 
