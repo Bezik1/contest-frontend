@@ -5,10 +5,10 @@ import { useFetch } from '../../hooks/useFetch'
 import { API_URLS } from '../../constans/constans'
 import './index.css'
 
-const Users = ({ choosenUserName } : { choosenUserName?: string }) =>{
+const Users = ({ choosenUserName } : { choosenUserName?: string | undefined }) =>{
 
     const ifChoosenUserName = () =>{
-        if(typeof choosenUserName === undefined){
+        if(String(choosenUserName) === 'undefined'){
             return false
         } else {
             return true
