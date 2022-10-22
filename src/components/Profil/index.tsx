@@ -7,9 +7,11 @@ import { useFetch } from "../../hooks/useFetch"
 import { Announcement, Comment, Response } from '../../interfaces/interfaces'
 import './index.css'
 import axios from "axios"
+import Wallet from "../Wallet"
 
 const Profil = () =>{
     const [clicked, click] = useState(false)
+    const [walletClicked, walletClick] = useState(false)
 
     const { ANNOUNCEMENTS_URL } = API_URLS
     const [data] = useFetch<Announcement[]>(ANNOUNCEMENTS_URL)
@@ -144,6 +146,17 @@ const Profil = () =>{
                     </div>
                     <div className="announcements-array">
                         <UserAnnouncements />
+                    </div>
+                    <div className='ether-wallet'>
+                        { 
+                        walletClicked 
+                            ? <Wallet walletClick={walletClick}/> 
+                            : <button 
+                                className="ether-btn btn" 
+                                onClick={() =>walletClick(true)}> 
+                                Etherum Wallet 
+                              </button>
+                        }
                     </div>
                 </div>
             </div>

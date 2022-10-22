@@ -1,0 +1,39 @@
+.wallet-header {
+    font-size: 2.3em;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.special {
+    color: #fff;
+    text-shadow:
+        0 0 10px #e75e87,
+        0 0 20px #e75e87,
+        0 0 30px #e75e87,
+        0 0 40px #e75e87;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.info {
+    margin: 10px;
+}
+
+.address {
+    transition: .5s;
+    cursor: pointer;
+    float: left;
+}
+
+.address:hover {
+    transition: .5s;
+    color: #e75e87;
+}
+
+.amount {
+    margin-top: 20px;
+    clear: both;
+    float: left;
+}
